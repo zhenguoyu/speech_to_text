@@ -1,19 +1,34 @@
 @echo off
-echo ===============æ­£åœ¨åŠ è½½çŽ¯å¢ƒ===============
+echo =============== ÕýÔÚ¼ÓÔØ»·¾³ =======================
 
-set exec_file=%USERPROFILE%\development\python\voice_to_word\main.py
+:: ÉèÖÃ±äÁ¿
+set exec_file=D:\develop\python\speech_to_text\main.py
 set current_dir=%cd%
 
-:: åˆå§‹åŒ– conda å¹¶æ¿€æ´»çŽ¯å¢ƒ
-call conda init cmd.exe > nul
-call %USERPROFILE%\miniconda3\Scripts\activate.bat > nul
-call conda activate myenv > nul
+:: ³õÊ¼»¯ conda ²¢¼¤»î»·¾³
+call conda init cmd.exe >nul
+call %USERPROFILE%\anaconda3\Scripts\activate.bat >nul
+call conda activate myenv >nul
 
-echo ===============çŽ¯å¢ƒåŠ è½½å®Œæ¯•ï¼Œæ­£åœ¨æ‰«æmp3æ–‡ä»¶===============
+echo =============== »·¾³¼ÓÔØÍê±Ï£¬ÕýÔÚÉ¨Ãè mp3 ÎÄ¼þ ===============
+echo.
 
+:: ³õÊ¼»¯¼ÆÊýÆ÷
+set /a i=0
+
+:: ±éÀúµ±Ç°Ä¿Â¼ÏÂµÄËùÓÐ .mp3 ÎÄ¼þ
 for %%f in (*.mp3) do (
-    echo ===============éŸ³é¢‘æ–‡ä»¶%%f, æ­£åœ¨èŽ·å–éŸ³é¢‘å†…å®¹===============
+    echo =============== ÒôÆµÎÄ¼þ %%f, ÕýÔÚ»ñÈ¡ÒôÆµÄÚÈÝ ===============
     python "%exec_file%" -f="%current_dir%\%%f"
+    set /a i+=1
 )
 
-echo ===============å¤„ç†å®Œæˆ===============
+:: ¼ì²éÊÇ·ñÕÒµ½ÒôÆµÎÄ¼þ
+if %i%==0 (
+    echo =============== Î´ÕÒµ½ÒôÆµÎÄ¼þ ===============
+) else (
+    echo =============== ´¦ÀíÍê³É, ¹²ÕÒµ½ %i% ¸öÒôÆµÎÄ¼þ ===============
+)
+
+:: °´ÈÎÒâ¼üÍË³ö
+pause

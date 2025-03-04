@@ -1,6 +1,6 @@
 Write-Output "===============正在加载环境==============="
 
-$exec_file = "$env:USERPROFILE\development\python\voice_to_word\main.py"
+$exec_file = "D:\develop\python\speech_to_text\main.py"
 $current_dir = Get-Location
 
 # 初始化 conda 并激活环境
